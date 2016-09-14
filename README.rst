@@ -6,6 +6,8 @@ Its done by reformatting the Behave json to Cucumber json.
 This script was developed during work on automation tools for Behalf inc. automation team.
 The script was developed and tested on Python 2.7, you're welcome to use this script and format it to other python versions.
 
+For easy install use: "pip install b2c"
+
 For any questions or suggestions you can contact the authoers listed below.
 
 Authors:
