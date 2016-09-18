@@ -11,6 +11,7 @@ For easy install use: "pip install b2c"
 Example of usage:
 .. code-block:: python
    import json
+   
    import b2c
 
    with open('behave_json.json') as behave_json:
