@@ -8,6 +8,14 @@ The script was developed and tested on Python 2.7, you're welcome to use this sc
 
 For easy install use: "pip install b2c"
 
+Example of usage:
+.. code-block:: python
+   import json
+   import b2c
+
+   with open('behave_json.json') as behave_json:
+      cucumber_json = b2c.convert(json.load(behave_json))
+
 For any questions or suggestions you can contact the authoers listed below.
 
 Authors:
