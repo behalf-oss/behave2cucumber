@@ -16,7 +16,9 @@ Example of usage:
     with open('behave_json.json') as behave_json:
         cucumber_json = b2c.convert(json.load(behave_json))
 
-For any questions or suggestions you can contact the authoers listed below.
+There is a list of know issue: https://github.com/behalfinc/b2c/issues/2
+
+For any questions or suggestions you can contact the authors listed below.
 
 Authors:
 Andrey Goldgamer - andrey.goldgamer@behalf.com
