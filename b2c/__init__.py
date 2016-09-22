@@ -26,7 +26,8 @@ def convert(json_file):
                 item["uri"] = uri
                 for field in undefined_fields:
                     item[field] = ""
-            if index != len(nodes) - 1:
+            if index != len(nodes) - 1 and nodes[index + 1] in item:
                 item[nodes[index + 1]] = format_level(item[nodes[index + 1]], index + 1)
         return tree
+
     return format_level(json_file)
