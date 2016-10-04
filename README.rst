@@ -24,6 +24,7 @@ Running tests
 -------------------------
 To run tests: 
  .. code-block:: bash
+    
     ./test_script
 
 Authors:
