@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export PYTHONPATH=$PYTHONPATH:$(realpath .)
+python tests/test.py
