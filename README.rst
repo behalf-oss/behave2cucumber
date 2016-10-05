@@ -20,6 +20,13 @@ There is a list of know issue: https://github.com/behalfinc/b2c/issues/2
 
 For any questions or suggestions you can contact the authors listed below.
 
+Running tests
+-------------------------
+To run tests: 
+ .. code-block:: bash
+    
+    ./test_script
+
 Authors:
 Andrey Goldgamer - andrey.goldgamer@behalf.com
 Zvika Messing - zvika@behalf.com

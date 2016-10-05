@@ -11,10 +11,7 @@ def convert(json_file):
                 if field in item:
                     item.pop(field)
             if 'tags' in item:
-                for tag in item["tags"]:
-                    tagName = tag
-                    item["tags"].remove(tag)
-                    item["tags"].append({"name": tagName, "line": item["line"] - 1})
+	        item['tags'] = [{"name": tag, "line": item["line"] - 1} for tag in item['tags']]
             if nodes[index] == 'steps':
                 if 'result' in item:
                     if 'error_message' in item["result"]:
