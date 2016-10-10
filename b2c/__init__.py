@@ -1,7 +1,7 @@
 def convert(json_file):
     nodes = ['feature', 'elements', 'steps']
     unneeded_fields = ['status', 'step_type']
-    
+
     def format_level(tree, index=0, counter=0):
         for item in tree:
             uri, line = item.pop("location").split(":")
@@ -10,7 +10,7 @@ def convert(json_file):
                 if field in item:
                     item.pop(field)
             if 'tags' in item:
-	        item['tags'] = [{"name": tag, "line": item["line"] - 1} for tag in item['tags']]
+                item['tags'] = [{"name": tag, "line": item["line"] - 1} for tag in item['tags']]
             if nodes[index] == 'steps':
                 if 'result' in item:
                     if 'error_message' in item["result"]:
