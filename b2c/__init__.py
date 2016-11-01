@@ -15,7 +15,7 @@ def convert(json_file):
                 if 'result' in item:
                     if 'error_message' in item["result"]:
                         error_msg = item["result"].pop('error_message')
-                        item["result"]["error_message"] = str(error_msg).replace("\"", "")
+                        item["result"]["error_message"] = (str(error_msg).replace("\"", ""))[:2000]
                 else:
                     item["result"] = {"status": "skipped", "duration": 0}
             else:
