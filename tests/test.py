@@ -1,5 +1,5 @@
 import unittest
-import b2c
+import behave2cucumber
 import json
 import os
 
@@ -8,7 +8,7 @@ EXPECTED_JSON = os.path.dirname(os.path.realpath(__file__)) + "/fixtures/expecte
 class TestB2C(unittest.TestCase):
     def test_convert(self):
         with open(BEHAVE_JSON) as f:
-            converted = b2c.convert(json.load(f))
+            converted = behave2cucumber.convert(json.load(f))
 
         with open(EXPECTED_JSON) as f:
             expected_result = json.load(f)
@@ -17,7 +17,7 @@ class TestB2C(unittest.TestCase):
 
     def test_ids_are_unique(self):
         with open(BEHAVE_JSON) as f:
-            converted = b2c.convert(json.load(f))
+            converted = behave2cucumber.convert(json.load(f))
             ids = []
             for feature in converted:
                 ids.append(feature['id'])

@@ -4,16 +4,16 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 setup(
-    name='b2c',
+    name='behave2cucumber',
 
-    version='1.5',
+    version='1.0',
 
     description='Behave to Cucumber json converter',
     long_description='This project helps solving the incompatibilty of Behave\'s genereated json reports '
                      'to tools using Cucumber json reports. '
                      'Its done by reformatting the Behave json to Cucumber json.',
 
-    url='https://github.com/behalf/b2c',
+    url='https://github.com/behalf-oss/behave2cucumber',
 
     author='Andrey Goldgamer, Zvika Messing',
     author_email='andrey.goldgamer@behalf.com, zvika@behalf.com ',
@@ -31,7 +31,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
 
-    keywords='b2c setuptools development cucumber behave automation json',
+    keywords='behave2cucumber setuptools development cucumber behave automation json',
 
     packages=find_packages(),
 
