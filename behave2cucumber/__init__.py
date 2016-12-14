@@ -32,7 +32,7 @@ def convert(json_file):
                     # Because several problems with long error messages the message sub-stringed to maximum 2000 chars.
                     if 'error_message' in item["result"]:
                         error_msg = item["result"].pop('error_message')
-                        item["result"]["error_message"] = (str(error_msg).replace("\"", ""))[:2000]
+                        item["result"]["error_message"] = unicode((str(error_msg).replace("\"", "").replace("\\'", ""))[:2000])
                 else:
                     # In behave, skipped tests doesn't have result object in their json, there-fore when we generating
                     # Cucumber report for every skipped test we need to generated a new result with status skipped
