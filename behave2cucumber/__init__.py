@@ -26,13 +26,13 @@ def convert(json_file):
                     item.pop(field)
             if 'tags' in item:
                 # Tags in behave are just a list of tag names, in cucumber every tag has a name and a line number.
-                item['tags'] = [{"name": tag, "line": item["line"] - 1} for tag in item['tags']]
+                item['tags'] = [{"name": tag if tag.startswith('@') else '@' + tag, "line": item["line"] - 1} for tag in item['tags']]
             if json_nodes[index] == 'steps':
                 if 'result' in item:
                     # Because several problems with long error messages the message sub-stringed to maximum 2000 chars.
                     if 'error_message' in item["result"]:
                         error_msg = item["result"].pop('error_message')
-                        item["result"]["error_message"] = unicode((str(error_msg).replace("\"", "").replace("\\'", ""))[:2000])
+                        item["result"]["error_message"] = str((str(error_msg).replace("\"", "").replace("\\'", ""))[:2000])
                 else:
                     # In behave, skipped tests doesn't have result object in their json, there-fore when we generating
                     # Cucumber report for every skipped test we need to generated a new result with status skipped
