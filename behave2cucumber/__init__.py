@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 '''
 
 
-def convert(json_file):
+def convert(json_file, remove_background=False):
     # json_nodes are the scopes available in behave/cucumber json: Feature -> elements(Scnerios) -> Steps
     json_nodes = ['feature', 'elements', 'steps']
     # These fields doesn't exist in cucumber report, there-fore when converting from behave, we need to delete these
@@ -56,8 +56,9 @@ def convert(json_file):
                     item[json_nodes[index + 1]], index + 1, id_counter=id_counter
                 )
         return tree
-    # Removing background element because behave pushes it steps to all scenarios already
-    if json_file[0]['elements'][0]['keyword'] == 'Background':
-        json_file[0]['elements'].pop(0)
+    # Option to remove background element because behave pushes it steps to all scenarios already
+    if remove_background:
+        if json_file[0]['elements'][0]['keyword'] == 'Background':
+            json_file[0]['elements'].pop(0)
     # Begin the recursion
     return format_level(json_file)
