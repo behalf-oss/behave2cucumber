@@ -56,6 +56,8 @@ def convert(json_file):
                     item[json_nodes[index + 1]], index + 1, id_counter=id_counter
                 )
         return tree
-
+    # Removing background element because behave pushes it steps to all scenarios already
+    if json_file[0]['elements'][0]['keyword'] == 'Background':
+        json_file[0]['elements'].pop(0)
     # Begin the recursion
     return format_level(json_file)
