@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 '''
 
 
-def convert(json_file, remove_background=False):
+def convert(json_file, remove_background=False, duration_format=False):
     # json_nodes are the scopes available in behave/cucumber json: Feature -> elements(Scnerios) -> Steps
     json_nodes = ['feature', 'elements', 'steps']
     # These fields doesn't exist in cucumber report, there-fore when converting from behave, we need to delete these
@@ -26,13 +26,17 @@ def convert(json_file, remove_background=False):
                     item.pop(field)
             if 'tags' in item:
                 # Tags in behave are just a list of tag names, in cucumber every tag has a name and a line number.
-                item['tags'] = [{"name": tag if tag.startswith('@') else '@' + tag, "line": item["line"] - 1} for tag in item['tags']]
+                item['tags'] = [{"name": tag if tag.startswith('@') else '@' + tag, "line": item["line"] - 1} for tag in
+                                item['tags']]
             if json_nodes[index] == 'steps':
                 if 'result' in item:
                     # Because several problems with long error messages the message sub-stringed to maximum 2000 chars.
                     if 'error_message' in item["result"]:
                         error_msg = item["result"].pop('error_message')
-                        item["result"]["error_message"] = str((str(error_msg).replace("\"", "").replace("\\'", ""))[:2000])
+                        item["result"]["error_message"] = str(
+                            (str(error_msg).replace("\"", "").replace("\\'", ""))[:2000])
+                    if 'duration' in item["result"] and duration_format:
+                        item["result"]["duration"] = long(item["result"]["duration"] * 1000000000)
                 else:
                     # In behave, skipped tests doesn't have result object in their json, there-fore when we generating
                     # Cucumber report for every skipped test we need to generated a new result with status skipped
@@ -56,6 +60,7 @@ def convert(json_file, remove_background=False):
                     item[json_nodes[index + 1]], index + 1, id_counter=id_counter
                 )
         return tree
+
     # Option to remove background element because behave pushes it steps to all scenarios already
     if remove_background:
         if json_file[0]['elements'][0]['keyword'] == 'Background':
