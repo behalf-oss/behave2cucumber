@@ -63,7 +63,7 @@ def convert(json_file, remove_background=False, duration_format=False):
 
     # Option to remove background element because behave pushes it steps to all scenarios already
     if remove_background:
-        if json_file[0]['elements'][0]['keyword'] == 'Background':
+        if json_file[0]['elements'][0]['type'] == 'background':
             json_file[0]['elements'].pop(0)
     # Begin the recursion
     return format_level(json_file)
