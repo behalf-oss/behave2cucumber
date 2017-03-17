@@ -36,7 +36,7 @@ def convert(json_file, remove_background=False, duration_format=False):
                         item["result"]["error_message"] = str(
                             (str(error_msg).replace("\"", "").replace("\\'", ""))[:2000])
                     if 'duration' in item["result"] and duration_format:
-                        item["result"]["duration"] = long(item["result"]["duration"] * 1000000000)
+                        item["result"]["duration"] = int(item["result"]["duration"] * 1000000000)
                 else:
                     # In behave, skipped tests doesn't have result object in their json, there-fore when we generating
                     # Cucumber report for every skipped test we need to generated a new result with status skipped
