@@ -6,7 +6,7 @@ here = path.abspath(path.dirname(__file__))
 setup(
     name='behave2cucumber',
 
-    version='1.0.2.2',
+    version='1.0.3',
 
     description='Behave to Cucumber json converter',
     long_description='This project helps solving the incompatibilty of Behave\'s genereated json reports '
