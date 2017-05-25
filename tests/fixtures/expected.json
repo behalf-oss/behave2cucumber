@@ -1,1 +1,215 @@
-[{"elements": [{"name": "run a simple test with one tag", "keyword": "Scenario", "tags": [{"line": 2, "name": "tag_a"}], "uri": "features/test.feature", "steps": [{"name": "we have behave installed", "keyword": "Given", "line": 4, "match": {"location": "features/steps/test.py:3", "arguments": []}, "result": {"status": "passed", "duration": 0.00011706352233886719}}, {"name": "we implement a test", "keyword": "When", "line": 5, "match": {"location": "features/steps/test.py:7", "arguments": []}, "result": {"status": "passed", "duration": 0.00012087821960449219}}, {"name": "behave will test it for us!", "keyword": "Then", "line": 6, "match": {"location": "features/steps/test.py:11", "arguments": []}, "result": {"status": "passed", "duration": 8.3208084106445312e-05}}], "line": 3, "type": "scenario", "id": 1, "description": ""}, {"name": "run a simple test with multiple tags", "keyword": "Scenario", "tags": [{"line": 9, "name": "tag_b"}, {"line": 9, "name": "tag_c"}], "uri": "features/test.feature", "steps": [{"name": "we have behave installed", "keyword": "Given", "line": 11, "match": {"location": "features/steps/test.py:3", "arguments": []}, "result": {"status": "passed", "duration": 9.7036361694335938e-05}}, {"name": "we implement a test", "keyword": "When", "line": 12, "match": {"location": "features/steps/test.py:7", "arguments": []}, "result": {"status": "passed", "duration": 9.9897384643554688e-05}}, {"name": "behave will test it for us!", "keyword": "Then", "line": 13, "match": {"location": "features/steps/test.py:11", "arguments": []}, "result": {"status": "passed", "duration": 0.00013399124145507812}}], "line": 10, "type": "scenario", "id": 2, "description": ""}, {"name": "A failing test", "keyword": "Scenario", "tags": [], "uri": "features/test.feature", "steps": [{"name": "we have behave installed", "keyword": "Given", "line": 16, "match": {"location": "features/steps/test.py:3", "arguments": []}, "result": {"status": "passed", "duration": 0.00012183189392089844}}, {"name": "we implement a test", "keyword": "When", "line": 17, "match": {"location": "features/steps/test.py:7", "arguments": []}, "result": {"status": "passed", "duration": 0.00010704994201660156}}, {"name": "behave will fail it for us!", "keyword": "Then", "line": 18, "match": {"location": "features/steps/test.py:15", "arguments": []}, "result": {"status": "failed", "duration": 0.00025892257690429688, "error_message": "[u'Traceback (most recent call last):', u'  File /data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py, line 1456, in run', u'    match.run(runner.context)', u'  File /data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py, line 1903, in run', u'    self.func(context, *args, **kwargs)', u'  File features/steps/test.py, line 17, in step_impl', u'    assert (1 == 2)', u'AssertionError']"}}], "line": 15, "type": "scenario", "id": 3, "description": ""}, {"name": "A skipped test", "keyword": "Scenario", "tags": [], "uri": "features/test.feature", "steps": [{"name": "we don't have behave installed", "keyword": "Given", "line": 21, "match": {"location": "features/steps/test.py:19", "arguments": []}, "result": {"status": "skipped", "duration": 0.00021791458129882812}}, {"line": 22, "name": "I don't care", "keyword": "Then", "result": {"status": "skipped", "duration": 0}}], "line": 20, "type": "scenario", "id": 4, "description": ""}], "name": "showing off behave", "keyword": "Feature", "tags": [], "uri": "features/test.feature", "line": 1, "id": 0, "description": ""}]
+[
+  {
+    "elements": [
+      {
+        "name": "run a simple test with one tag",
+        "keyword": "Scenario",
+        "tags": [
+          {
+            "line": 2,
+            "name": "tag_a"
+          }
+        ],
+        "uri": "features/test.feature",
+        "steps": [
+          {
+            "name": "we have behave installed",
+            "keyword": "Given",
+            "line": 4,
+            "match": {
+              "location": "features/steps/test.py:3",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0.00011706352233886719
+            }
+          },
+          {
+            "name": "we implement a test",
+            "keyword": "When",
+            "line": 5,
+            "match": {
+              "location": "features/steps/test.py:7",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0.00012087821960449219
+            }
+          },
+          {
+            "name": "behave will test it for us!",
+            "keyword": "Then",
+            "line": 6,
+            "match": {
+              "location": "features/steps/test.py:11",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8.3208084106445312e-05
+            }
+          }
+        ],
+        "line": 3,
+        "type": "scenario",
+        "id": 1,
+        "description": ""
+      },
+      {
+        "name": "run a simple test with multiple tags",
+        "keyword": "Scenario",
+        "tags": [
+          {
+            "line": 9,
+            "name": "tag_b"
+          },
+          {
+            "line": 9,
+            "name": "tag_c"
+          }
+        ],
+        "uri": "features/test.feature",
+        "steps": [
+          {
+            "name": "we have behave installed",
+            "keyword": "Given",
+            "line": 11,
+            "match": {
+              "location": "features/steps/test.py:3",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9.7036361694335938e-05
+            }
+          },
+          {
+            "name": "we implement a test",
+            "keyword": "When",
+            "line": 12,
+            "match": {
+              "location": "features/steps/test.py:7",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9.9897384643554688e-05
+            }
+          },
+          {
+            "name": "behave will test it for us!",
+            "keyword": "Then",
+            "line": 13,
+            "match": {
+              "location": "features/steps/test.py:11",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0.00013399124145507812
+            }
+          }
+        ],
+        "line": 10,
+        "type": "scenario",
+        "id": 2,
+        "description": ""
+      },
+      {
+        "name": "A failing test",
+        "keyword": "Scenario",
+        "tags": [],
+        "uri": "features/test.feature",
+        "steps": [
+          {
+            "name": "we have behave installed",
+            "keyword": "Given",
+            "line": 16,
+            "match": {
+              "location": "features/steps/test.py:3",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0.00012183189392089844
+            }
+          },
+          {
+            "name": "we implement a test",
+            "keyword": "When",
+            "line": 17,
+            "match": {
+              "location": "features/steps/test.py:7",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0.00010704994201660156
+            }
+          },
+          {
+            "name": "behave will fail it for us!",
+            "keyword": "Then",
+            "line": 18,
+            "match": {
+              "location": "features/steps/test.py:15",
+              "arguments": []
+            },
+            "result": {
+              "status": "failed",
+              "duration": 0.00025892257690429688,
+              "error_message": "[u'Traceback (most recent call last):', u'  File /data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py, line 1456, in run', u'    match.run(runner.context)', u'  File /data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py, line 1903, in run', u'    self.func(context, *args, **kwargs)', u'  File features/steps/test.py, line 17, in step_impl', u'    assert (1 == 2)', u'AssertionError']"
+            }
+          }
+        ],
+        "line": 15,
+        "type": "scenario",
+        "id": 3,
+        "description": ""
+      },
+      {
+        "name": "A skipped test",
+        "keyword": "Scenario",
+        "tags": [],
+        "uri": "features/test.feature",
+        "steps": [
+          {
+            "name": "we don't have behave installed",
+            "keyword": "Given",
+            "line": 21,
+            "match": {
+              "location": "features/steps/test.py:19",
+              "arguments": []
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0.00021791458129882812
+            }
+          },
+          {
+            "line": 22,
+            "name": "I don't care",
+            "keyword": "Then",
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "line": 20,
+        "type": "scenario",
+        "id": 4,
+        "description": ""
+      }
+    ],
+    "name": "showing off behave",
+    "keyword": "Feature",
+    "tags": [],
+    "uri": "features/test.feature",
+    "line": 1,
+    "id": 0,
+    "description": ""
+  }
+]

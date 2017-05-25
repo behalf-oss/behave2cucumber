@@ -16,6 +16,15 @@ Example of usage:
     with open('behave_json.json') as behave_json:
         cucumber_json = behave2cucumber.convert(json.load(behave_json))
 
+
+Running from bash
+-------------------------
+Main has been added thanks to @lawnmowerlatte and now you can run:
+ .. code-block:: bash
+ 
+   python -m behave2cucumber
+
+
 Running tests
 -------------------------
 To run tests: 

@@ -1,3 +1,208 @@
 [
-{"status": "failed", "elements": [{"name": "run a simple test with one tag", "keyword": "Scenario", "tags": ["tag_a"], "steps": [{"name": "we have behave installed", "keyword": "Given", "step_type": "given", "result": {"status": "passed", "duration": 0.00011706352233886719}, "match": {"location": "features/steps/test.py:3", "arguments": []}, "location": "features/test.feature:4"}, {"name": "we implement a test", "keyword": "When", "step_type": "when", "result": {"status": "passed", "duration": 0.00012087821960449219}, "match": {"location": "features/steps/test.py:7", "arguments": []}, "location": "features/test.feature:5"}, {"name": "behave will test it for us!", "keyword": "Then", "step_type": "then", "result": {"status": "passed", "duration": 8.3208084106445312e-05}, "match": {"location": "features/steps/test.py:11", "arguments": []}, "location": "features/test.feature:6"}], "location": "features/test.feature:3", "type": "scenario"}, {"name": "run a simple test with multiple tags", "keyword": "Scenario", "tags": ["tag_b", "tag_c"], "steps": [{"name": "we have behave installed", "keyword": "Given", "step_type": "given", "result": {"status": "passed", "duration": 9.7036361694335938e-05}, "match": {"location": "features/steps/test.py:3", "arguments": []}, "location": "features/test.feature:11"}, {"name": "we implement a test", "keyword": "When", "step_type": "when", "result": {"status": "passed", "duration": 9.9897384643554688e-05}, "match": {"location": "features/steps/test.py:7", "arguments": []}, "location": "features/test.feature:12"}, {"name": "behave will test it for us!", "keyword": "Then", "step_type": "then", "result": {"status": "passed", "duration": 0.00013399124145507812}, "match": {"location": "features/steps/test.py:11", "arguments": []}, "location": "features/test.feature:13"}], "location": "features/test.feature:10", "type": "scenario"}, {"name": "A failing test", "keyword": "Scenario", "tags": [], "steps": [{"name": "we have behave installed", "keyword": "Given", "step_type": "given", "result": {"status": "passed", "duration": 0.00012183189392089844}, "match": {"location": "features/steps/test.py:3", "arguments": []}, "location": "features/test.feature:16"}, {"name": "we implement a test", "keyword": "When", "step_type": "when", "result": {"status": "passed", "duration": 0.00010704994201660156}, "match": {"location": "features/steps/test.py:7", "arguments": []}, "location": "features/test.feature:17"}, {"name": "behave will fail it for us!", "keyword": "Then", "step_type": "then", "result": {"status": "failed", "duration": 0.00025892257690429688, "error_message": ["Traceback (most recent call last):", "  File \"/data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py\", line 1456, in run", "    match.run(runner.context)", "  File \"/data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py\", line 1903, in run", "    self.func(context, *args, **kwargs)", "  File \"features/steps/test.py\", line 17, in step_impl", "    assert (1 == 2)", "AssertionError"]}, "match": {"location": "features/steps/test.py:15", "arguments": []}, "location": "features/test.feature:18"}], "location": "features/test.feature:15", "type": "scenario"}, {"name": "A skipped test", "keyword": "Scenario", "tags": [], "steps": [{"name": "we don't have behave installed", "keyword": "Given", "step_type": "given", "result": {"status": "skipped", "duration": 0.00021791458129882812}, "match": {"location": "features/steps/test.py:19", "arguments": []}, "location": "features/test.feature:21"}, {"step_type": "then", "name": "I don't care", "keyword": "Then", "location": "features/test.feature:22"}], "location": "features/test.feature:20", "type": "scenario"}], "name": "showing off behave", "keyword": "Feature", "tags": [], "location": "features/test.feature:1"}
+  {
+    "status": "failed",
+    "elements": [
+      {
+        "name": "run a simple test with one tag",
+        "keyword": "Scenario",
+        "tags": [
+          "tag_a"
+        ],
+        "steps": [
+          {
+            "name": "we have behave installed",
+            "keyword": "Given",
+            "step_type": "given",
+            "result": {
+              "status": "passed",
+              "duration": 0.00011706352233886719
+            },
+            "match": {
+              "location": "features/steps/test.py:3",
+              "arguments": []
+            },
+            "location": "features/test.feature:4"
+          },
+          {
+            "name": "we implement a test",
+            "keyword": "When",
+            "step_type": "when",
+            "result": {
+              "status": "passed",
+              "duration": 0.00012087821960449219
+            },
+            "match": {
+              "location": "features/steps/test.py:7",
+              "arguments": []
+            },
+            "location": "features/test.feature:5"
+          },
+          {
+            "name": "behave will test it for us!",
+            "keyword": "Then",
+            "step_type": "then",
+            "result": {
+              "status": "passed",
+              "duration": 8.3208084106445312e-05
+            },
+            "match": {
+              "location": "features/steps/test.py:11",
+              "arguments": []
+            },
+            "location": "features/test.feature:6"
+          }
+        ],
+        "location": "features/test.feature:3",
+        "type": "scenario"
+      },
+      {
+        "name": "run a simple test with multiple tags",
+        "keyword": "Scenario",
+        "tags": [
+          "tag_b",
+          "tag_c"
+        ],
+        "steps": [
+          {
+            "name": "we have behave installed",
+            "keyword": "Given",
+            "step_type": "given",
+            "result": {
+              "status": "passed",
+              "duration": 9.7036361694335938e-05
+            },
+            "match": {
+              "location": "features/steps/test.py:3",
+              "arguments": []
+            },
+            "location": "features/test.feature:11"
+          },
+          {
+            "name": "we implement a test",
+            "keyword": "When",
+            "step_type": "when",
+            "result": {
+              "status": "passed",
+              "duration": 9.9897384643554688e-05
+            },
+            "match": {
+              "location": "features/steps/test.py:7",
+              "arguments": []
+            },
+            "location": "features/test.feature:12"
+          },
+          {
+            "name": "behave will test it for us!",
+            "keyword": "Then",
+            "step_type": "then",
+            "result": {
+              "status": "passed",
+              "duration": 0.00013399124145507812
+            },
+            "match": {
+              "location": "features/steps/test.py:11",
+              "arguments": []
+            },
+            "location": "features/test.feature:13"
+          }
+        ],
+        "location": "features/test.feature:10",
+        "type": "scenario"
+      },
+      {
+        "name": "A failing test",
+        "keyword": "Scenario",
+        "tags": [],
+        "steps": [
+          {
+            "name": "we have behave installed",
+            "keyword": "Given",
+            "step_type": "given",
+            "result": {
+              "status": "passed",
+              "duration": 0.00012183189392089844
+            },
+            "match": {
+              "location": "features/steps/test.py:3",
+              "arguments": []
+            },
+            "location": "features/test.feature:16"
+          },
+          {
+            "name": "we implement a test",
+            "keyword": "When",
+            "step_type": "when",
+            "result": {
+              "status": "passed",
+              "duration": 0.00010704994201660156
+            },
+            "match": {
+              "location": "features/steps/test.py:7",
+              "arguments": []
+            },
+            "location": "features/test.feature:17"
+          },
+          {
+            "name": "behave will fail it for us!",
+            "keyword": "Then",
+            "step_type": "then",
+            "result": {
+              "status": "failed",
+              "duration": 0.00025892257690429688,
+              "error_message": [
+                "Traceback (most recent call last):",
+                "  File \"/data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py\", line 1456, in run",
+                "    match.run(runner.context)",
+                "  File \"/data/home/london/fprincipato/b2c_fix/lib/python2.6/site-packages/behave/model.py\", line 1903, in run",
+                "    self.func(context, *args, **kwargs)",
+                "  File \"features/steps/test.py\", line 17, in step_impl",
+                "    assert (1 == 2)",
+                "AssertionError"
+              ]
+            },
+            "match": {
+              "location": "features/steps/test.py:15",
+              "arguments": []
+            },
+            "location": "features/test.feature:18"
+          }
+        ],
+        "location": "features/test.feature:15",
+        "type": "scenario"
+      },
+      {
+        "name": "A skipped test",
+        "keyword": "Scenario",
+        "tags": [],
+        "steps": [
+          {
+            "name": "we don't have behave installed",
+            "keyword": "Given",
+            "step_type": "given",
+            "result": {
+              "status": "skipped",
+              "duration": 0.00021791458129882812
+            },
+            "match": {
+              "location": "features/steps/test.py:19",
+              "arguments": []
+            },
+            "location": "features/test.feature:21"
+          },
+          {
+            "step_type": "then",
+            "name": "I don't care",
+            "keyword": "Then",
+            "location": "features/test.feature:22"
+          }
+        ],
+        "location": "features/test.feature:20",
+        "type": "scenario"
+      }
+    ],
+    "name": "showing off behave",
+    "keyword": "Feature",
+    "tags": [],
+    "location": "features/test.feature:1"
+  }
 ]
