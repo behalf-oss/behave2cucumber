@@ -24,9 +24,10 @@ log.addHandler(consoleHandler)
 
 
 options = {
-    "short": "hd:i:o:rf",
+    "short": "hd:i:o:rfD:",
     "long": [
-        "help", "debug=", "infile=", "outfile=", "remove-background", "format-duration"
+        "help", "debug=", "infile=", "outfile=", "remove-background",
+        "format-duration","deduplicate="
     ],
     "descriptions": [
         "Print help message",
@@ -34,7 +35,8 @@ options = {
         "Specify the input JSON",
         "Specify the output JSON, otherwise use stdout",
         "Remove background steps from output",
-        "Format the duration"
+        "Format the duration",
+        "Remove up to n duplicate scenarios caused by @autoretry"
     ]
 }
 
@@ -98,6 +100,9 @@ def main(argv):
         if opt in ("-f", "--format-duration"):
             log.info("Format Duration: Enabled")
             duration_format = True
+        if opt in ("-D", "--deduplicate"):
+            log.info("Deduplicate: Enabled")
+            deduplicate = arg
 
     if infile is None:
         log.critical("No input JSON provided.")
@@ -107,7 +112,8 @@ def main(argv):
     with open(infile) as f:
         cucumber_output = convert(json.load(f),
                                   remove_background=remove_background,
-                                  duration_format=duration_format)
+                                  duration_format=duration_format,
+                                  deduplicate=deduplicate)
 
     if outfile is not None:
         with open(outfile, 'w') as f:
