@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 '''
 
 
-def convert(json_file, remove_background=False, duration_format=False, deduplicate=None):
+def convert(json_file, remove_background=False, duration_format=False, deduplicate=False):
     # json_nodes are the scopes available in behave/cucumber json: Feature -> elements(Scnerios) -> Steps
     json_nodes = ['feature', 'elements', 'steps']
     # These fields doesn't exist in cucumber report, there-fore when converting from behave, we need to delete these
@@ -67,7 +67,7 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
             if feature['elements'][0]['keyword'] == 'Background':
                 feature['elements'].pop(0)
 
-    if deduplicate is not None:
+    if deduplicate:
         def check_dupe(current_feature, current_scenario, previous_scenario):
             if "autoretry" not in current_feature['tags'] and "autoretry" not in current_scenario['tags']:
                 return False
@@ -93,20 +93,16 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
                 # Append the scenario to the working list
                 scenarios.append(scenario)
 
-                # Check if the previous n scenarios
-                for dupe_index in range(deduplicate):
-                    try:
-                        # See if the previous scenario exists and matches
-                        previous_scenario = scenarios[-2]
-                        if check_dupe(feature, scenario, previous_scenario):
-                            # Remove the earlier scenario from the working list
-                            scenarios.pop(-2)
-                        else:
-                            # If this is not a match, don't look any further back
-                            break
-                    except IndexError:
-                        # If we're at the beginning of the list, don't do anything
-                        pass
+                # Check the previous scenario
+                try:
+                    # See if the previous scenario exists and matches
+                    previous_scenario = scenarios[-2]
+                    if check_dupe(feature, scenario, previous_scenario):
+                        # Remove the earlier scenario from the working list
+                        scenarios.pop(-2)
+                except IndexError:
+                    # If we're at the beginning of the list, don't do anything
+                    pass
 
             # Replace the existing list with the working list
             feature['elements'] = scenarios

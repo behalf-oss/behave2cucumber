@@ -24,10 +24,10 @@ log.addHandler(consoleHandler)
 
 
 options = {
-    "short": "hd:i:o:rfD:",
+    "short": "hd:i:o:rfD",
     "long": [
         "help", "debug=", "infile=", "outfile=", "remove-background",
-        "format-duration","deduplicate="
+        "format-duration","deduplicate"
     ],
     "descriptions": [
         "Print help message",
@@ -36,7 +36,7 @@ options = {
         "Specify the output JSON, otherwise use stdout",
         "Remove background steps from output",
         "Format the duration",
-        "Remove up to n duplicate scenarios caused by @autoretry"
+        "Remove duplicate scenarios caused by @autoretry"
     ]
 }
 
@@ -102,7 +102,7 @@ def main(argv):
             duration_format = True
         if opt in ("-D", "--deduplicate"):
             log.info("Deduplicate: Enabled")
-            deduplicate = arg
+            deduplicate = True
 
     if infile is None:
         log.critical("No input JSON provided.")
