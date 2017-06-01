@@ -86,6 +86,7 @@ def main(argv):
     outfile = None
     remove_background = False
     duration_format = False
+    deduplicate = False
 
     for opt, arg in opts:
         if opt in ("-i", "--infile"):
