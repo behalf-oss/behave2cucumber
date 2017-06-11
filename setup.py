@@ -41,5 +41,9 @@ setup(
 
     data_files=[],
 
-    entry_points={},
+    entry_points={
+        'console_scripts': [
+            'behave2cucumber = behave2cucumber.behave2cucumber.__main__:main
+        ],
+    },
 )
