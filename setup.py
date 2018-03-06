@@ -43,7 +43,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'behave2cucumber = behave2cucumber.behave2cucumber.__main__:main
+            'behave2cucumber = behave2cucumber.behave2cucumber.__main__:main'
         ],
     },
 )
