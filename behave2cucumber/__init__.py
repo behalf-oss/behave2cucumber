@@ -64,8 +64,9 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
     # Option to remove background element because behave pushes it steps to all scenarios already
     if remove_background:
         for feature in json_file:
-            if feature['elements'][0]['type'] == 'background':
-                feature['elements'].pop(0)
+            if feature.get('elements'):
+                if feature['elements'][0].get('type') == 'background':
+                    feature['elements'].pop(0)
 
     if deduplicate:
         def check_dupe(current_feature, current_scenario, previous_scenario):
@@ -89,7 +90,7 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
             scenarios = []
 
             # For each scenario in the feature
-            for scenario in feature['elements']:
+            for scenario in feature.get('elements', []):
                 # Append the scenario to the working list
                 scenarios.append(scenario)
 
