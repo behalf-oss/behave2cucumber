@@ -51,7 +51,10 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
             else:
                 # uri is the name of the feature file the current item located
                 item["uri"] = uri
-                item["description"] = ""
+                if 'description' in item:
+                    item["description"] = '\n'.join(map(str, item["description"]))
+                else:
+                    item["description"] = ""	
                 item["id"] = id_counter
                 id_counter += 1
             # If the scope is not "steps" proceed with the recursion
