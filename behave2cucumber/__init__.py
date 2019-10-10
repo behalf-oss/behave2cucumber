@@ -64,6 +64,15 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
     # Option to remove background element because behave pushes it steps to all scenarios already
     if remove_background:
         for feature in json_file:
+            if not feature.get('elements'):
+                continue
+                
+            if not len(feature.get('elements')) > 0:
+                continue
+                
+            if not feature.get('elements')[0].get('type'):
+                continue
+                
             if feature['elements'][0]['type'] == 'background':
                 feature['elements'].pop(0)
 
