@@ -6,14 +6,15 @@ here = path.abspath(path.dirname(__file__))
 setup(
     name='behave2cucumber',
 
-    version='1.0.3',
+    version='1.0.4.1',
 
-    description='Behave to Cucumber json converter',
+    description='Behave to Cucumber json converter (lawnmowerlatte fork)',
     long_description='This project helps solving the incompatibilty of Behave\'s genereated json reports '
                      'to tools using Cucumber json reports. '
-                     'Its done by reformatting the Behave json to Cucumber json.',
+                     'Its done by reformatting the Behave json to Cucumber json. '
+                     'This fork contains a fix by lawnmowerlatte which has not been pulled into the main repo.',
 
-    url='https://github.com/behalf-oss/behave2cucumber',
+    url='https://github.com/lawnmowerlatte/behave2cucumber',
 
     author='Andrey Goldgamer, Zvika Messing',
     author_email='andrey.goldgamer@behalf.com, zvika@behalf.com ',
