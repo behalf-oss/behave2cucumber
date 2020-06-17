@@ -4,7 +4,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 setup(
-    name='behave2cucumber',
+    name='behave2cucumber-lawnmowerlatte',
 
     version='1.0.4.1',
 
