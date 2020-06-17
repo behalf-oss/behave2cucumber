@@ -6,7 +6,7 @@ here = path.abspath(path.dirname(__file__))
 setup(
     name='behave2cucumber-lawnmowerlatte',
 
-    version='1.0.4.1',
+    version='1.0.4.2',
 
     description='Behave to Cucumber json converter (lawnmowerlatte fork)',
     long_description='This project helps solving the incompatibilty of Behave\'s genereated json reports '
