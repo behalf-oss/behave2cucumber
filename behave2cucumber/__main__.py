@@ -24,10 +24,10 @@ log.addHandler(consoleHandler)
 
 
 options = {
-    "short": "hd:i:o:rfD",
+    "short": "hd:i:o:rfDe",
     "long": [
         "help", "debug=", "infile=", "outfile=", "remove-background",
-        "format-duration","deduplicate"
+        "format-duration", "deduplicate", "remove-empty"
     ],
     "descriptions": [
         "Print help message",
@@ -36,7 +36,8 @@ options = {
         "Specify the output JSON, otherwise use stdout",
         "Remove background steps from output",
         "Format the duration",
-        "Remove duplicate scenarios caused by @autoretry"
+        "Remove duplicate scenarios caused by @autoretry",
+        "Remove scenarios which contain no steps"
     ]
 }
 
@@ -87,6 +88,7 @@ def main(argv):
     remove_background = False
     duration_format = False
     deduplicate = False
+    remove_empty = False
 
     for opt, arg in opts:
         if opt in ("-i", "--infile"):
@@ -104,6 +106,9 @@ def main(argv):
         if opt in ("-D", "--deduplicate"):
             log.info("Deduplicate: Enabled")
             deduplicate = True
+        if opt in ("-e", "--remove-empty"):
+            log.info("Remove Empty: Enabled")
+            remove_empty = True
 
     if infile is None:
         log.critical("No input JSON provided.")
@@ -114,7 +119,8 @@ def main(argv):
         cucumber_output = convert(json.load(f),
                                   remove_background=remove_background,
                                   duration_format=duration_format,
-                                  deduplicate=deduplicate)
+                                  deduplicate=deduplicate,
+                                  remove_empty=remove_empty)
 
     if outfile is not None:
         with open(outfile, 'w') as f:

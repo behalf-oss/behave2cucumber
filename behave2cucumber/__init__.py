@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 '''
 
 
-def convert(json_file, remove_background=False, duration_format=False, deduplicate=False):
+def convert(json_file, remove_background=False, duration_format=False, deduplicate=False, remove_empty=False):
     # json_nodes are the scopes available in behave/cucumber json: Feature -> elements(Scnerios) -> Steps
     json_nodes = ['feature', 'elements', 'steps']
     # These fields doesn't exist in cucumber report, there-fore when converting from behave, we need to delete these
@@ -64,8 +64,23 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
     # Option to remove background element because behave pushes it steps to all scenarios already
     if remove_background:
         for feature in json_file:
-            if feature['elements'][0]['type'] == 'background':
-                feature['elements'].pop(0)
+            if feature.get('elements'):
+                if feature['elements'][0].get('type') == 'background':
+                    feature['elements'].pop(0)
+
+    if remove_empty:
+        for feature in json_file:
+            # Create a working list
+            scenarios = []
+
+            # For each scenario in the feature
+            for scenario in feature['elements']:
+                # Add the scenario only if there are steps
+                if len(scenario['steps']) > 0:
+                    scenarios.append(scenario)
+
+            # Replace the existing list with the working list
+            feature['elements'] = scenarios
 
     if deduplicate:
         def check_dupe(current_feature, current_scenario, previous_scenario):
@@ -89,7 +104,7 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
             scenarios = []
 
             # For each scenario in the feature
-            for scenario in feature['elements']:
+            for scenario in feature.get('elements', []):
                 # Append the scenario to the working list
                 scenarios.append(scenario)
 
