@@ -7,9 +7,9 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
-
-
-def convert(json_file, remove_background=False, duration_format=False, deduplicate=False):
+import base64
+screenshots_base_folder= '.\\screenshot\\'
+def convert(json_file, remove_background=False, duration_format=False, deduplicate=False, screenshot=False):
     # json_nodes are the scopes available in behave/cucumber json: Feature -> elements(Scnerios) -> Steps
     json_nodes = ['feature', 'elements', 'steps']
     # These fields doesn't exist in cucumber report, there-fore when converting from behave, we need to delete these
@@ -20,6 +20,8 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
         for item in tree:
             # Location in behave json translates to uri and line in cucumber json
             uri, line_number = item.pop("location").split(":")
+            # The name of screenshot file is the name of the feature file,plus the line number, like login.feature1.png
+            screenshot_name=uri+line_number
             item["line"] = int(line_number)
             for field in fields_not_exist_in_cucumber_json:
                 if field in item:
@@ -37,6 +39,10 @@ def convert(json_file, remove_background=False, duration_format=False, deduplica
                             (str(error_msg).replace("\"", "").replace("\\'", ""))[:2000])
                     if 'duration' in item["result"] and duration_format:
                         item["result"]["duration"] = int(item["result"]["duration"] * 1000000000)
+                    if screenshot:
+                        with open(screenshots_base_folder +screenshot_name+".png", "rb") as f: 
+                            base64_data = base64.b64encode(f.read())  # converted by base64
+                            item["embeddings"]=[{"data":str(base64_data,"utf-8"),"mime_type": "image/png"}]
                 else:
                     # In behave, skipped tests doesn't have result object in their json, there-fore when we generating
                     # Cucumber report for every skipped test we need to generated a new result with status skipped
