@@ -28,6 +28,7 @@ options = {
     "long": [
         "help", "debug=", "infile=", "outfile=", "remove-background",
         "format-duration","deduplicate"
+        ,"screenshot"
     ],
     "descriptions": [
         "Print help message",
@@ -37,6 +38,7 @@ options = {
         "Remove background steps from output",
         "Format the duration",
         "Remove duplicate scenarios caused by @autoretry"
+        "screenshot"
     ]
 }
 
@@ -87,6 +89,7 @@ def main(argv):
     remove_background = False
     duration_format = False
     deduplicate = False
+    screenshot=False
 
     for opt, arg in opts:
         if opt in ("-i", "--infile"):
@@ -104,7 +107,10 @@ def main(argv):
         if opt in ("-D", "--deduplicate"):
             log.info("Deduplicate: Enabled")
             deduplicate = True
-
+        if opt in ("-s", "--screenshot"):
+            log.info("screenshot: Enabled")
+            capture_screenshot = True
+            
     if infile is None:
         log.critical("No input JSON provided.")
         usage()
@@ -114,7 +120,8 @@ def main(argv):
         cucumber_output = convert(json.load(f),
                                   remove_background=remove_background,
                                   duration_format=duration_format,
-                                  deduplicate=deduplicate)
+                                  deduplicate=deduplicate,
+                                  screenshot=screenshot)
 
     if outfile is not None:
         with open(outfile, 'w') as f:
